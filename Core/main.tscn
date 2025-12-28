@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwy6sqtwgm7jf"]
+
+[ext_resource type="Script" uid="uid://pxjtii56oua8" path="res://Core/Debug.gd" id="1_5yh6k"]
+[ext_resource type="Script" uid="uid://ba303oqew0c2n" path="res://Level Up/LevelUpBar.gd" id="2_n0dd3"]
+[ext_resource type="Script" uid="uid://loeewifxffe0" path="res://ItemUnlock/ItemUnlockBar.gd" id="3_avlqc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0dd3"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5yh6k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Level Up Bar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("level_text")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 341.0
+offset_top = -197.5
+offset_right = -341.0
+offset_bottom = -170.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+script = ExtResource("2_n0dd3")
+level_text = NodePath("Label")
+
+[node name="Label" type="Label" parent="CanvasLayer/Level Up Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Debug Buttons" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 344.0
+offset_top = 80.0
+offset_right = 808.0
+offset_bottom = 112.0
+
+[node name="Level Up Button" type="Button" parent="CanvasLayer/Debug Buttons"]
+layout_mode = 2
+text = "Level Up"
+
+[node name="GainExpButton" type="Button" parent="CanvasLayer/Debug Buttons"]
+layout_mode = 2
+text = "Gain Exp +100"
+
+[node name="GainExpButton2" type="Button" parent="CanvasLayer/Debug Buttons"]
+layout_mode = 2
+text = "Gain Exp +1000"
+
+[node name="GainExpButton3" type="Button" parent="CanvasLayer/Debug Buttons"]
+layout_mode = 2
+text = "Gain Exp +10000"
+
+[node name="Item Unlock Bar" type="Control" parent="CanvasLayer"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -84.0
+offset_right = 320.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_avlqc")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Item Unlock Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Item Unlock Bar"]
+custom_minimum_size = Vector2(500, 65)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -60.0
+offset_right = 320.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n0dd3")
+vertical_scroll_mode = 0
+
+[node name="MainPanel" type="Control" parent="CanvasLayer/Item Unlock Bar/ScrollContainer"]
+custom_minimum_size = Vector2(1340, 65)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Item Unlock Bar/ScrollContainer/MainPanel"]
+modulate = Color(0.94509804, 0.4745098, 0, 1)
+custom_minimum_size = Vector2(500, 5)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="ItemsContainer" type="HBoxContainer" parent="CanvasLayer/Item Unlock Bar/ScrollContainer/MainPanel"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 65.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[connection signal="pressed" from="CanvasLayer/Debug Buttons/Level Up Button" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Debug Buttons/GainExpButton" to="." method="_on_gain_exp_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Debug Buttons/GainExpButton2" to="." method="_on_gain_exp_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Debug Buttons/GainExpButton3" to="." method="_on_gain_exp_button_3_pressed"]

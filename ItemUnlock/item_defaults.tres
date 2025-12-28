@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ItemConfiguration" load_steps=10 format=3 uid="uid://dius4b1w0jqm4"]
+
+[ext_resource type="Script" uid="uid://dj17glx1k5kl4" path="res://ItemUnlock/Item.gd" id="1_a488q"]
+[ext_resource type="Script" uid="uid://cdgd2p0r6e4n1" path="res://ItemUnlock/ItemConfiguration.gd" id="2_wloc6"]
+[ext_resource type="Texture2D" uid="uid://2fb5uqnkpw2x" path="res://icon.svg" id="2_xftav"]
+
+[sub_resource type="Resource" id="Resource_wloc6"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 2
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[sub_resource type="Resource" id="Resource_sig77"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 4
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[sub_resource type="Resource" id="Resource_uprga"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 8
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[sub_resource type="Resource" id="Resource_nrutl"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 12
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[sub_resource type="Resource" id="Resource_xftav"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 14
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[sub_resource type="Resource" id="Resource_mlevv"]
+script = ExtResource("1_a488q")
+item_icon = ExtResource("2_xftav")
+min_level = 16
+metadata/_custom_type_script = "uid://dj17glx1k5kl4"
+
+[resource]
+script = ExtResource("2_wloc6")
+items = Array[ExtResource("1_a488q")]([SubResource("Resource_wloc6"), SubResource("Resource_sig77"), SubResource("Resource_uprga"), SubResource("Resource_nrutl"), SubResource("Resource_xftav"), SubResource("Resource_mlevv")])
+metadata/_custom_type_script = "uid://cdgd2p0r6e4n1"
