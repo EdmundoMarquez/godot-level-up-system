@@ -6,36 +6,42 @@
 
 [sub_resource type="Resource" id="Resource_wloc6"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 2
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"
 
 [sub_resource type="Resource" id="Resource_sig77"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 4
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"
 
 [sub_resource type="Resource" id="Resource_uprga"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 8
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"
 
 [sub_resource type="Resource" id="Resource_nrutl"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 12
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"
 
 [sub_resource type="Resource" id="Resource_xftav"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 14
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"
 
 [sub_resource type="Resource" id="Resource_mlevv"]
 script = ExtResource("1_a488q")
+item_id = "Godot Plate"
 item_icon = ExtResource("2_xftav")
 min_level = 16
 metadata/_custom_type_script = "uid://dj17glx1k5kl4"

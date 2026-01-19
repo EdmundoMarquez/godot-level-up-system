@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://elkjb7qmyx4w"]
+
+[ext_resource type="Script" uid="uid://dwrrcei5b0rke" path="res://Utils/popup.gd" id="1_2roex"]
+
+[sub_resource type="Animation" id="Animation_2roex"]
+resource_name = "show_popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Popup Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_emcbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Popup Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vq5m1"]
+_data = {
+&"RESET": SubResource("Animation_emcbn"),
+&"show_popup": SubResource("Animation_2roex")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2roex"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="PopupInstance" type="Node2D" node_paths=PackedStringArray("message_text")]
+script = ExtResource("1_2roex")
+message_text = NodePath("CanvasLayer/Popup Panel/Button/RichTextLabel")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+libraries = {
+&"": SubResource("AnimationLibrary_vq5m1")
+}
+autoplay = "show_popup"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background Blocker" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.44313726)
+
+[node name="Popup Panel" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Popup Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -87.0
+offset_right = 212.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_2roex")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2roex")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2roex")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2roex")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2roex")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Popup Panel/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 25.0
+offset_right = -26.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[wave]Popup Element[/wave]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Popup Panel/Button" to="." method="_on_button_pressed"]

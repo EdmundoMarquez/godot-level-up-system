@@ -5,6 +5,7 @@ extends Node
 
 var item_configuration = ResourceLoader.load("res://ItemUnlock/item_defaults.tres").duplicate()
 var level_item = preload("res://ItemUnlock/Item.tscn")
+var popup = preload("res://Utils/popup_instance.tscn")
 var max_item_level
 
 @onready var scroll_container = $ScrollContainer
@@ -53,3 +54,25 @@ func on_level_up(level: int, levels_gained: int):
 	var scroll_value = ((float(level + levels_gained) / item_configuration.get_max_item_level()) * h_scroll_bar.max_value) + progress_bar_fill_offset * 100
 	print(str(scroll_value))
 	tween.tween_property(scroll_container, "scroll_horizontal", scroll_value, 0.5)
+	tween.tween_interval(1)
+	tween.tween_callback(_add_item_unlocks_on_queue.bind(level, levels_gained))
+
+var item_unlock_queue: Array[Item] = []
+
+func _add_item_unlocks_on_queue(previous_level: int, levels_gained: int):
+	for _i in range(levels_gained):
+		var item = item_configuration.find_item_by_level(previous_level + _i + 1)
+		if item:
+			item_unlock_queue.append(item)
+
+	_show_next_item_unlock()
+			
+func _show_next_item_unlock():
+	if item_unlock_queue.is_empty():
+		return
+	var item = item_unlock_queue[0]
+	var popup_instance = popup.instantiate()
+	self.call_deferred("add_child", popup_instance)
+	popup_instance.initialize("You received a new item:\n" + item.item_id + " (" + str(item.min_level) + ")")
+	item_unlock_queue.remove_at(0)
+	popup_instance.tree_exiting.connect(_show_next_item_unlock)
